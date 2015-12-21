@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<!--
+	Alpha by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Inscription des joueurs</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets2/css/main.css" />
+	</head>
+	<body>
+		<div id="page-wrapper">
+			<!-- Header -->
+				<header id="header">
+					<h1>Inscription des joueurs</h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="/test">Accueil</a></li>
+							<li><a href="/niews">News</a></li>
+							<li><a href="/faq">FAQ</a></li>
+							<li><a href="/test-group">Recherche de groupes</a></li>
+							<li>
+								<a href="#" class="icon fa-angle-down">Inscription</a>
+								<ul>
+									<li><a href="/test-owner">Propriétaire de terrain</a></li>
+									<li><a href="test-player">Joueur</a></li>
+									<li><a href="/test-tournament">Tournoi</a></li>
+								</ul>
+							</li>
+							<li><a href="/contact" >Nous contacter</a></li>
+							<li><a href="/connect" class="button">Connexion</a></li>
+						</ul>
+					</nav>
+				</header>
+			<!-- Main -->
+				<section id="main" class="container 75%">
+					<header>
+						<h2>Inscription des joueurs</h2>
+						<p>Veuillez compléter les champs suivants. Tous les champs sont obligatoires. Il est obligé de s'inscrire pour pouvoir s'inscrire au tournoi. Une fois inscrit, dirigez-vous vers 'Inscription' et ensuit vers 'Tournoi'</p>
+					</header>
+					{% if errorname == 'true' %}
+						<header>
+							<p><font size="3" color="red">Le nom de famille ne peut pas dépasser trente caractères.</font></p>
+						</header>
+					{% elseif errorfirstname == 'true' %}
+						<header>
+							<p><font size="3" color="red">Le prénom ne peut pas dépasser trente caractères.</font></p>
+						</header>
+					{% elseif erroremail == 'true' %}
+						<header>
+							<p><font size="3" color="red">L'adresse mail doit être une adresse valide.</font></p>
+						</header>
+					{% elseif errorage == 'true' %}
+						<header>
+							<p><font size="3" color="red">Il faut rentrer un âge valide.</font></p>
+						</header>
+					{% endif %}
+					<div class="box">
+						{{ form_start(formplayer2) }}
+						<form method="post" action="#">
+							<div class="row uniform 50%">
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formplayer2.name) }}
+									<!-- <input type="text" name="name" id="name" value="" placeholder="Name" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formplayer2.firstname) }}
+									<!-- <input type="text" name="name" id="name" value="" placeholder="FirstName" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formplayer2.email) }}
+									<!-- <input type="email" name="email" id="email" value="" placeholder="Email" /> -->
+								</div>
+								<div class="12u">
+									{{ form_row(formplayer2.address) }}
+									<!-- <input type="text" name="name" id="name" value="" placeholder="Name" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formplayer2.phone) }}
+									<!-- <input type="text" name="name" id="name" value="" placeholder="Name" /> -->
+								</div>
+
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formplayer2.ranking) }}
+									<!-- <input type="text" name="name" id="name" value="" placeholder="Name" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_widget(formplayer2.gender) }}
+									<!-- <input type="text" name="name" id="name" value="" placeholder="Name" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_widget(formplayer2.age) }}
+									<!-- <input type="text" name="name" id="name" value="" placeholder="Name" /> -->
+								</div>
+							</div>
+							<div class="row uniform">
+								<div class="12u">
+									<ul class="actions align-center">
+										<li><input id="playerSubmit" type="submit" value="Envoyer" /></li>
+									</ul>
+								</div>
+							</div>
+						</form>
+						{{ form_end(formplayer2) }}
+					</div>
+				</section>
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="https://www.facebook.com/Asmae-161275587240084/?fref=ts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Tous droits réservés.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</footer>
+		</div>
+		
+		<!-- Scripts -->
+			<script src="assets2/js/jquery.min.js"></script>
+			<script src="assets2/js/jquery.dropotron.min.js"></script>
+			<script src="assets2/js/jquery.scrollgress.min.js"></script>
+			<script src="assets2/js/skel.min.js"></script>
+			<script src="assets2/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets2/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets2/js/main.js"></script>
+
+	</body>
+</html>

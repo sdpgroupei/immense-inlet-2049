@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<!--
+	Alpha by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Inscription au Tournoi</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets2/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets2/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets2/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1>Inscription au Tournoi</h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="/test">Accueil</a></li>
+							<li><a href="/niews">News</a></li>
+							<li><a href="/faq">FAQ</a></li>
+							<li><a href="/test-group">Recherche de groupes</a></li>
+							<li>
+								<a href="#" class="icon fa-angle-down">Inscription</a>
+								<ul>
+									<li><a href="/test-owner">Propriétaire de terrain</a></li>
+									<li><a href="test-player">Joueur</a></li>
+									<li><a href="/test-tournament">Tournoi</a></li>
+
+								</ul>
+							</li>
+							<li><a href="/contact" >Nous contacter</a></li>
+							<li><a href="/connect" class="button">Connexion</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<section id="main" class="container 75%">
+					<header>
+						<h2>Inscription au Tournoi</h2>
+						<p>Veuillez compléter les champs suivants. Tous les champs sont obligatoires. Vous pouvez aussi vous proposez de
+						devenir une paire responsable. Cela signifiera que vous vous occuperez du groupe de poule (rendre les résultats, 
+						veillez à la bonne entente, .... ), si un administrateur décide de vous confier ce poste.</p>
+					</header>
+					{% if erroryourname == 'true' %}
+						<header>
+							<p><font size="3" color="red">Le nom de famille ne peut pas dépasser trente caractères.</font></p>
+						</header>
+					{% elseif erroryourfirstname == 'true' %}
+						<header>
+							<p><font size="3" color="red">Le prénom ne peut pas dépasser trente caractères.</font></p>
+						</header>
+					{% elseif erroryouremail == 'true' %}
+						<header>
+							<p><font size="3" color="red">L'adresse mail doit être une adresse valide.</font></p>
+						</header>
+					{% elseif errorpairname == 'true' %}
+						<header>
+							<p><font size="3" color="red">Le nom de famille ne peut pas dépasser trente caractères.</font></p>
+						</header>
+					{% elseif errorpairfirstname == 'true' %}
+						<header>
+							<p><font size="3" color="red">Le prénom ne peut pas dépasser trente caractères.</font></p>
+						</header>
+					{% elseif errorpairemail == 'true' %}
+						<header>
+							<p><font size="3" color="red">L'adresse mail doit être une adresse valide.</font></p>
+						</header>
+					{% endif %}
+					<div class="box">
+						<p> Si vous souhaitez vous inscrire en solo, vous pouvez cliquer sur le boutton ci-dessous.</p>
+						<ul class="actions">
+							<li><a href="/alone" class="button special big">Inscription en Solo</a></li>
+						</ul>
+						<p>Si vous souhaitez vous inscrire en paire, veuillez remplir le formulaire ci-dessous. Attention vérifier bien, avant de vous
+							inscrire, que votre paire et vous même êtes bien inscrit en tant que joueur. Si ce n'est pas le cas vous pouvez vous inscrire ici :
+							<ul class="actions">
+								<li><a href="/test-player" class="button special big">Inscription Joueur</a></li>
+							</ul>
+						</p>
+						<h4> Pour s'inscrire en paire:</h4>
+						{{ form_start(formpair) }}
+						<form method="post" name="one" action="#">
+							<div class="row uniform 50%">
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formpair.yourname) }}
+									<!-- <input type="text" name="name" id="name" value="" placeholder="Name" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formpair.pairname) }}
+									<!-- <input type="email" name="email" id="email" value="" placeholder="Email" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formpair.yourfirstname) }}
+									<!-- <input type="email" name="email" id="email" value="" placeholder="Email" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formpair.pairfirstname) }}
+									<!-- <input type="email" name="email" id="email" value="" placeholder="Email" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formpair.youremail) }}
+									<!-- <input type="email" name="email" id="email" value="" placeholder="Email" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formpair.pairemail) }}
+									<!-- <input type="email" name="email" id="email" value="" placeholder="Email" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_widget(formpair.tournament) }}
+									<!-- <input type="email" name="email" id="email" value="" placeholder="Email" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_widget(formpair.leader) }}
+									<!-- <input type="text" name="leader" id="leader" value="" placeholder="Group leader?" /> -->
+								</div>
+								<div class="12u">
+									{{ form_row(formpair.wishes) }}
+									<!-- <input type="text" name="wishes" id="wishes" value="" placeholder="Demandes" /> -->
+								</div>
+							</div>
+
+							<div class="row uniform">
+								<div class="12u">
+									<ul class="actions align-center">
+										<li><input id="pairsubmit" type="submit" value="Envoyer" /></li>
+									</ul>
+								</div>
+							</div>
+						</form>
+						{{ form_end(formpair) }}
+
+
+					</div>
+				</section>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="https://www.facebook.com/Asmae-161275587240084/?fref=ts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Tous droits réservés.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets2/js/jquery.min.js"></script>
+			<script src="assets2/js/jquery.dropotron.min.js"></script>
+			<script src="assets2/js/jquery.scrollgress.min.js"></script>
+			<script src="assets2/js/skel.min.js"></script>
+			<script src="assets2/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets2/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets2/js/main.js"></script>
+
+	</body>
+</html>

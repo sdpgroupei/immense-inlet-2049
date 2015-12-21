@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<!--
+	Alpha by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>
+			{% if status == 'Succes' %}
+				Succès
+			{% else %}
+				{{status}}
+			{% endif %}
+		</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets2/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets2/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets2/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1>
+					{% if status == 'Succes' %}
+						Succès
+					{% else %}
+						{{status}}
+					{% endif %}
+					</h1>
+					<nav id="nav">
+						<!-- <ul> -->
+							<ul>
+								<li><a href="/test">Accueil</a></li>
+								<li><a href="/niews">News</a></li>
+								<li><a href="/faq">FAQ</a></li>
+								<li><a href="/test-group">Recherche de groupes</a></li>
+								{% if staff %}
+								<li><a href="#" class="icon fa-angle-down">Lien vers page administrateur</a>
+								<ul>
+									<li><a href="/admingestion">Tous les Courts</a></li>
+									<li><a href="/adminpairgestion">Gestion des paires</a></li>
+									<li><a href="/admingroupsgestion/-1">Tous les groupes</a></li>
+									<li><a href="/adminresults">Tous les Résultats</a></li>
+									<li><a href="/courtadmin">Vos Courts</a></li>
+									<li><a href="/test-match-result">Entrer les Résultats </a></li>
+									<li><a href="/groupgeneration">Groupes Génération</a></li>
+									<li><a href="/niewsfeed">Création de News</a></li>
+									<li><a href="/niewsgestion">Gestion des News</a></li>
+									<li><a href="/courthistory">Historique des courts</a></li>
+									<li><a href="/knockoff">Knockoff</a></li>
+									<li><a href="/edittournament">Créer un tournoi</a></li>
+									{% if superuser %}
+									<li><a href="/knockoffsuperuser">Générer knockoff</a></li>
+									<li><a href="/knockoffgestion">Gestion du knockoff</a></li>
+									{% endif %}
+									<li><a href="/export-db">Exporter en CSV</a></li>
+								</ul>
+								</li>
+								{% endif %}
+
+								{% if owner %}
+								<li><a href="/ownergestion" >Lien vers page owner</a></li>
+								{% endif %}
+
+								{% if staff or owner %}
+									<li><a href="/disconnect" class="button">Déconnexion</a></li>
+								{% else %}
+								<li>
+									<a href="#" class="icon fa-angle-down">Inscription</a>
+									<ul>
+										<li><a href="/test-owner">Propriétaire de terrain</a></li>
+										<li><a href="test-player">Joueur</a></li>
+										<li><a href="/test-tournament">Tournoi</a></li>
+
+									</ul>
+								</li>
+
+								<li><a href="/contact" >Nous contacter</a></li>
+								{% endif %}
+								{% if not (staff or owner) %}
+								<li><a href="/connect" class="button">Connexion</a></li>
+								{% endif %}
+
+							</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<section id="main" class="container 75%">
+					<header>
+						{% if status == 'Succes' %}
+						<h2>Ajout réussi</h2>
+						<p>Vous avez été correctement inscrit.</p>
+						<p> Un e-mail vous a été envoyé pour vérifier que votre adresse mail est correcte. Si vous ne
+							le recevez pas après plusieurs minutes, réinscrivez vous avec une adresse mail valide. Pensez à vérifier vos spams.</p>
+						{% elseif status == 'Erreur' %}
+						<h2>Erreur</h2>
+						{% if tournament == 'true' %}
+						<p>Vous (ou votre partenaire) n'êtes pas encore inscrit en tant qu'utilisateur de ce site. Veuillez d'abord vous inscrire en tant que joueur avant de vous inscrire au tournoi.</p>
+						{% else %}
+						<p>Vous n'avez pas été correctement ajouté à la dababase.</p>
+						{% endif %}
+						{% elseif status == 'Connexion' %}
+						<h2>Connexion réussie</h2>
+						<p> Vous êtes bien connecté sur le site. Vous pouvez retourner sur la page d'acceuil ou aller dans la barre de navigation au-dessus pour avoir accès à vos informations. </p>
+						{% else %}
+						<h2>Erreur</h2>
+						<p> Une erreur s'est produite lors du téléchargement de cette page. Veuillez réessayer dans quelques instants. </p>
+						{% endif %}
+					</header>
+				</section>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="https://www.facebook.com/Asmae-161275587240084/?fref=ts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets2/js/jquery.min.js"></script>
+			<script src="assets2/js/jquery.dropotron.min.js"></script>
+			<script src="assets2/js/jquery.scrollgress.min.js"></script>
+			<script src="assets2/js/skel.min.js"></script>
+			<script src="assets2/js/util.js"></script>
+			<script src="assets2/js/main.js"></script>
+
+	</body>
+</html>

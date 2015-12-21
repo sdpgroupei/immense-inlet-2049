@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<!--
+	Prologue by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Paiement</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets2/css/main.css" />
+	</head>
+	<body>
+		<div id="page-wrapper">
+			<!-- Header -->
+				<header id="header">
+					<h1>Paiement</h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="/test">Accueil</a></li>
+							<li><a href="/niews">News</a></li>
+							<li><a href="/faq">FAQ</a></li>
+							<li><a href="/test-group">Recherche de groupes</a></li>
+							<li>
+								<a href="#" class="icon fa-angle-down">Inscription</a>
+								<ul>
+									<li><a href="/test-owner">Propriétaire de terrain</a></li>
+									<li><a href="test-player">Joueur</a></li>
+									<li><a href="/test-tournament">Tournoi</a></li>
+								</ul>
+							</li>
+							<li><a href="/contact" >Nous contacter</a></li>
+							<li><a href="/connect" class="button">Connexion</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			</div>
+			<!-- Header end  -->
+
+				<!-- Contact -->
+					<section id="main" class="container 75%">
+						<header>
+							<h2>Paiement</h2>
+							<p>Pour finaliser l'inscription à un tournoi, veuillez choisir votre mode de paiement.</p>
+						</header>
+						<div class="container">
+
+							{{ form_start(formpay) }}
+							<form method="post" action="#">
+								<div class="row">
+									<div class="6u$ 12u$(mobile)">
+										{{ form_widget(formpay.yourpaymethod) }}
+									</div>
+									<p><br /></p>
+									<div class="12u$">
+
+										<input id="pay_submit" type="submit" value="Confirmer" />
+									</div>
+								</div>
+							</form>
+							{{ form_end(formpay) }}
+
+							{% if paymentinfo == 'virement' %}
+								<p>Un mail de confirmation vous a été envoyé. </p>
+								<p> Voici les informations pratiques concernant le paiement par virement : <br />
+									Veuillez payer le montant dû au moins cinq jours ouvrables avant le tournoi. <br />
+									Montant : 25 € <br /><!-- todo modify the amount  -->
+									Numéro de compte: BE46 1430 7568 2636. <br />
+									Communication Spéciale : [Nom Prénom des deux membres de la paire] - [Jour du tournoi] <br />
+								</p>
+							{% endif %}
+
+							{% if paymentinfo == 'paypal' %}
+								<p> Veuillez cliquer sur le bouton "Faire un don" et payer le montant dû. Le coût de l'inscription est de 25€ par personne. </p>
+								
+								<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+								<input type="hidden" name="cmd" value="_s-xclick">
+								<input type="hidden" name="hosted_button_id" value="BBGJBR473E4FC">
+								<input type="image" src="https://www.paypalobjects.com/fr_FR/BE/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal, le réflexe sécurité pour payer en ligne">
+								<img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+</form>
+							{% endif %}
+
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<ul class="icons">
+						<li><a href="https://www.facebook.com/Asmae-161275587240084/?fref=ts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+					</ul>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Tous droits réservés.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</footer>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrolly.min.js"></script>
+			<script src="../assets/js/jquery.scrollzer.min.js"></script>
+			<script src="../assets/js/skel.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>

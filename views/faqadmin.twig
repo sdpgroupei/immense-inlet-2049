@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<!--
+	Alpha by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>FAQ Admin</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets2/css/main.css" />
+	</head>
+	<body>
+		<div id="page-wrapper">
+			<!-- Header -->
+				<header id="header">
+					<h1>FAQ Admin</h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="/test">Accueil</a></li>
+							<li><a href="/niews">News</a></li>
+							<li><a href="/faq">FAQ</a></li>
+							<li><a href="#" class="icon fa-angle-down">Lien vers page administrateur</a>
+							<ul>
+								<li><a href="/faqadmin">FAQ pour les admins</a></li>
+								<li><a href="/admingestion">Tous les courts</a></li>
+								<li><a href="/adminpairgestion">Gestion des paires</a></li>
+								<li><a href="/admingroupsgestion/-1">Tous les groupes</a></li>
+								<li><a href="/adminresults">Tous les Résultats</a></li>
+								<li><a href="/courtadmin">Vos courts</a></li>
+								<li><a href="/test-match-result">Entrer les résultats </a></li>
+								<li><a href="/groupgeneration">Génération des groupes</a></li>
+								<li><a href="/niewsfeed">Création de news</a></li>
+								<li><a href="/niewsgestion">Gestion des news</a></li>
+								<li><a href="/courthistory">Historique des courts</a></li>
+								<li><a href="/knockoff">Knockoff</a></li>
+								<li><a href="/edittournament">Créer un tournoi</a></li>
+								{% if superuser %}
+								<li><a href="/knockoffsuperuser">Générer le knockoff</a></li>
+								<li><a href="/knockoffgestion">Gestion du knockoff</a></li>
+								{% endif %}
+								<li><a href="/export-db">Exporter en CSV</a></li>
+							</ul>
+							</li>
+							<li><a href="/disconnect" class="button">Déconnexion</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<section id="main" class="container 75%">
+					<header>
+						<h2>Foire aux questions: admin</h2>
+					</header>
+					<header>
+						<h3>1) Comment créer un tournoi ?</h3>
+						<p> Pour créer un tournoi, cliquer sur le lien "Créer un tournoi" dans le menu déroulant "Lien vers pages administrateur". Vous devrez alors insérer le nom du tournoi, l'année, le mois et le jour.</p>
+
+						<h3>2) Comment gérer les courts ?</h3>
+						<p> Pour gérer tous les courts, cliquer sur le lien "Tous les courts" dans le menu déroulant "Lien vers pages administrateur". Vous avez alors une liste qui reprend l'ensemble des terrains.</p>
+
+						<h4>2a) Comment rajouter un court ?</h4>
+						<p>Vous ne pouvez pas rajouter de court. Seul le propriétaire du terrain peut le faire. Pour cela, il doit préalablement s'inscrire sur le site.</p>
+
+						<h4>2b) Comment supprimer un court ?</h4>
+						<p>Vous avez la possibilité de supprimer un court sur la page "Tous les courts". Pour accéder à cetta page, veuillez vous en remettre à la question 2). Une fois sur cette page, la deuxième colonne en partant de la droite vous permet de supprimer n'importe quel court, même ceux qui ne vous sont pas assignés. Veillez donc à ne pas commettre d'erreurs.</p>
+
+						<h4>2c) Comment me désigner responsable d'un court ?</h4>
+						<p>Sur la page "Tous les courts" (référez-vous à la question 2) pour y accéder), vous pouvez vous désigner responsable d'un court en cliquant sur le bouton "Rajouter" situé dans la colonne la plus à droite du tableau. Une fois que vous avez rajouté un terrain, vous serez automatiquement redirigé vers la page "Vos courts".</p>
+
+						<h3>3) Comment gérer les paires ?</h3>
+						<p>Pour gérer les paires, cliquer sur le lien "Gestion des paires" dans le menu déroulant "Lien vers pages administrateur". Vous avez alors devant vous un formulaire. De base, ce formulaire est vide et les deux tableaux en-dessous du formulaire indiquent respectivement l'ensemble des paires et l'ensemble des joueurs inscrits en solo. Si vous voulez faire une recherche parmis ces paires, vous pouvez utilisez le formulaire et y encoder les coordonnées d'un joueur en particulier. Le résultat de cette recherche sera affiché dans les deux tableaux.</p>
+
+						<h3>4) Comment gérer les groupes ?</h3>
+						<p>Pour gérer les groupes, cliquer sur le lien "Tous les groupes" dans le menu déroulant "Lien vers pages administrateur". Vous devez alors choisir un tournoi. Une fois fait, vous pouvez regarder les différents groupes dans ce tournoi. D'autre part, vous pouvez faire une recherche par paire pour voir dans quel groupe elle se trouve.</p>
+
+						<h3>5) Comment encoder les résultats d'un match ?</h3>
+						<p>Pour encoder les résultats d'un match, cliquer sur le lien "Entrer les résultats" dans le menu déroulant "Lien vers pages administrateur". Une fois sur cette page, vous avez toutes les instructions nécessaires sur la page-même pour pouvoir encoder les résultats d'un match.</p>
+
+						<h4>5a) Comment voir les résultats de différents matchs ?</h4>
+						<p>Pour voir les résultats de matchs (et non les encoder), cliquer plutôt sur le lien "Tous les résultats" dans le menu déroulant "Lien vers pages administrateur".</p>
+
+						<h3>6) Comment générer des groupes pour un tournoi ?</h3>
+						<p>Pour générer des groupes pour un tournoi, cliquer sur le lien "Générer les groupes" dans le menu déroulant "Lien vers pages administrateur". Il vous faut alors encoder le nombre de paires par groupe, le nom du tournoi et le temps (pluvieux ou non). L'algorithme génère alors automatiquement une première ébauche des groupes. Vous pouvez alors modifier manuellement les groupes. Tout est possible.</p>
+
+						<h3>7) Comment créer une news ?</h3>
+						<p> Pour créer une news, cliquer sur le lien "Création de news" dans le menu déroulant "Lien vers pages administrateur". Une fois sur cette page, vous inscrivez juste la nouvelle en n'oubliant pas de donner votre nom (qui ne doit pas obligatoirement être le nom que vous avez donné lorsque vous vous être inscrit).</p>
+
+						<h4>7a) Comment supprimer une news ?</h4>
+						<p>Pour gérer et supprimer des news, cliquer sur le lien "Gérer les news" dans le menu déroulant "Lien vers pages administrateur". Une fois sur cette page, vous aurez la liste de toutes les news visibles sur le site. Pour en supprimer une, il vous suffit de cliquer sur le bouton rouge "Supprimer" en-dessous de la nouvelle en question. ATTENTION: le bouton "Supprimer" se situant au-dessus de chaque nouvelle correspond à une autre news, faites attention de ne pas supprimer les mauvaises news ;).</p>
+
+						<h3>8) Comment gérer le knockoff ?</h3>
+						<p>Pour gérer le knockoff, cliquer sur le lien "Knockoff" dans le menu déroulant "Lien vers pages administrateur".</p>
+
+						<h3>9) Comment gérer l'historique des terrains ?</h3>
+						<p>Pour gérer l'historique des terrains, cliquer sur le lien "Historique des courts" dans le menu déroulant "Lien vers pages administrateur". Soit vous voulez ajouter un commentaire pour un court: cliquer alors sur le bouton "Ajouter un commentaire". Soit vous voulez juste voir l'historique des commentaires pour un terrain en particulier: trouver le nom du terrain et cliquer sur le bouton "Rechercher", il est alors possible de supprimer des commentaires qui ne sont plus d'actualité.</p>
+
+						<h3>10) Comment exporter les données des utilisateurs et des propriétaires de terrain ?</h3>
+						<p>Pour exporter les données des utilisateurs et des propriétaires de terrain, cliquer sur le lien "Exporter en CSV" dans le menu déroulant "Lien vers pages administrateur". Vous pouvez alor soit télécharger les données des utilisateurs, soit celles des propriétaires de terrain sous format CSV (que vous pouvez ouvrir avec Excell).</p>
+					</header>
+
+					<header>
+						<h2>Un grand merci à nos sponsors:</h2>
+							<p>
+								<img src="../image_contact/exki.png">
+								<img src="../image_contact/VW.png">
+								<img src="../image_contact/Hayez.png">
+								<img src="../image_contact/Weplay.png">
+								<img src="../image_contact/LaLibre1.png">
+								<img src="../image_contact/RAid.png">
+								<img src="../image_contact/smart.png">
+								<img src="../image_contact/Eventail.png">
+								<img src="../image_contact/Deloitte.png">
+							</p>
+					</header>
+				</section>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<ul class="icons">
+						<li><a href="https://www.facebook.com/Asmae-161275587240084/?fref=ts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+					</ul>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Tous droits réservés.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets2/js/jquery.min.js"></script>
+			<script src="assets2/js/jquery.dropotron.min.js"></script>
+			<script src="assets2/js/jquery.scrollgress.min.js"></script>
+			<script src="assets2/js/skel.min.js"></script>
+			<script src="assets2/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets2/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets2/js/main.js"></script>
+
+	</body>
+</html>

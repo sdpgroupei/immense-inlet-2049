@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<!--
+	Alpha by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Gestion des groupes</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="../assets2/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../assets2/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="../assets2/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header" >
+					<h1>Recherche dans un groupe</h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="/test">Accueil</a></li>
+							<li><a href="{{ url('admingroupsgestion', {id: tournament_id}) }} ">Retour aux groupes</a></li>
+							<li><a href="/niews">News</a></li>
+							<li><a href="/faq">FAQ</a></li>
+							<li><a href="#" class="icon fa-angle-down">Lien vers page administrateur</a>
+							<ul>
+								<li><a href="/faqadmin">FAQ pour les admins</a></li>
+								<li><a href="/admingestion">Tous les courts</a></li>
+								<li><a href="/adminpairgestion">Gestion des paires</a></li>
+								<li><a href="/admingroupsgestion/-1">Tous les groupes</a></li>
+								<li><a href="/adminresults">Tous les Résultats</a></li>
+								<li><a href="/courtadmin">Vos courts</a></li>
+								<li><a href="/test-match-result">Entrer les résultats </a></li>
+								<li><a href="/groupgeneration">Génération de groupes</a></li>
+								<li><a href="/niewsfeed">Création de news</a></li>
+								<li><a href="/niewsgestion">Gestion des news</a></li>
+								<li><a href="/courthistory">Historique des courts</a></li>
+								<li><a href="/knockoff">Knockoff</a></li>
+								<li><a href="/edittournament">Créer un tournoi</a></li>
+								{% if superuser %}
+								<li><a href="/knockoffsuperuser">Générer knockoff</a></li>
+								<li><a href="/knockoffgestion">Gestion du knockoff</a></li>
+								{% endif %}
+								<li><a href="/export-db">Exporter en CSV</a></li>
+							</ul>
+							</li>
+							<li><a href="/contact" >Nous contacter</a></li>
+							<li><a href="/disconnect" class="button">Déconnexion</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<section id="main" class="container 75%">
+					<header>
+						<h2>Recherche dans un groupe</h2>
+						<p>Veuillez remplir une ou plusieurs cases du formulaires, puis validez votre recherche</p>
+					</header>
+					<div class="box">
+						{{ form_start(formplayer) }}
+						<form method="post" action="#">
+							<div class="row uniform 50%">
+								<div class="12u">
+									{{ form_row(formplayer.lastname) }}
+									<!-- <input type="text" name="lastname" id="lastname" value="" placeholder="Nom" /> -->
+								</div>
+							</div>
+
+							<div class="row uniform 50%">
+								<div class="12u">
+									{{ form_row(formplayer.firstname) }}
+									<!-- <input type="text" name="firstname" id="firstname" value="" placeholder="Prenom" /> -->
+								</div>
+							</div>
+
+							<div class="row uniform 50%">
+								<div class="12u">
+									{{ form_row(formplayer.rank) }}
+									<!-- <input type="text" name="rank" id="rank" value="" placeholder="Classement" /> -->
+								</div>
+							</div>
+
+							<div class="row uniform">
+								<div class="12u">
+									<ul class="actions align-center">
+										<li><input id="submitsearch" type="submit" value="Valider" /></li>
+									</ul>
+								</div>
+							</div>
+						</form>
+						{{ form_end(formplayer) }}
+					</div>
+
+					<div class="row">
+						<div class="12u">
+
+							<!-- Text -->
+								<section class="box">
+										<h3>Tous les groupes</h3>
+								</section>
+						</div>
+					</div>
+
+					{% for group in groups %}
+						<div class="row">
+							<div class="12u">
+
+								<!-- Table -->
+									<section class="box">
+
+										<div class="table-wrapper">
+											Groupe : {{group.id}} joue à {{group.court}}<br>
+											Représentant : {{group.leader}}<p align="right"><a href="  {{ url('admingroupgestion', {id: group.id}) }} ">Modifier le groupe</a></p>
+											{% if group is empty %}
+											<p> Groupe vide ! </p>
+											{% endif %}
+											<!-- <table>
+												<thead>
+													<tr>
+														<th>N° de la pair</th>
+														<th>Prénom du premier joueur</th>
+														<th>Nom du premier joueur</th>
+														<th>Classement du premier joueur</th>
+														<th>Prénom du deuxième joueur</th>
+														<th>Nom du deuxième joueur</th>
+														<th>Classement du deuxième joueur</th>
+													</tr>
+												</thead>
+
+												</table> -->
+											<table>
+												<thead>
+													<tr>
+														<th>N° de la pair</th>
+														<th>Prénom du premier joueur</th>
+														<th>Nom du premier joueur</th>
+														<th>Classement du premier joueur</th>
+														<th>Prénom du deuxième joueur</th>
+														<th>Nom du deuxième joueur</th>
+														<th>Classement du deuxième joueur</th>
+													</tr>
+												</thead>
+												<tbody>
+													{% for n in group.list %}
+													<tr>
+														<td>{{ n.id}}</td>
+														<td>{{ n.fn1}}</td>
+														<td>{{ n.ln1}}</td>
+														<td>{{ n.rk1}}</td>
+														<td>{{ n.fn2}}</td>
+														<td>{{ n.ln2}}</td>
+														<td>{{ n.rk2}}</td>
+													</tr>
+													{% endfor %}
+												</tbody>
+												<tfoot>
+													<tr>
+														<td colspan="2"></td>
+														<!-- <td>100.00</td> -->
+													</tr>
+												</tfoot>
+											</table>
+
+												<!-- <li>Pas de groupes dans la database !</li> -->
+										</div>
+									</section>
+
+							</div>
+
+					</div>
+
+					{% endfor %}
+					</section>
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="https://www.facebook.com/Asmae-161275587240084/?fref=ts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Tous droits réservés.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="../assets2/js/jquery.min.js"></script>
+			<script src="../assets2/js/jquery.dropotron.min.js"></script>
+			<script src="../assets2/js/jquery.scrollgress.min.js"></script>
+			<script src="../assets2/js/skel.min.js"></script>
+			<script src="../assets2/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../assets2/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../assets2/js/main.js"></script>
+
+	</body>
+</html>

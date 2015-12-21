@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<!--
+	Alpha by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Inscription d'un propriétaire de terrain</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets2/css/main.css" />
+	</head>
+	<body>
+		<div id="page-wrapper">
+			<!-- Header -->
+			<header id="header">
+				<h1>Inscription d'un propriétaire de terrain</h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="/test">Accueil</a></li>
+						<li><a href="/niews">News</a></li>
+						<li><a href="/faq">FAQ</a></li>
+						<li><a href="/test-group">Recherche de groupes</a></li>
+						<li>
+							<a href="#" class="icon fa-angle-down">Inscription</a>
+							<ul>
+								<li><a href="/test-owner">Propriétaire de terrain</a></li>
+								<li><a href="test-player">Joueur</a></li>
+								<li><a href="/test-tournament">Tournoi</a></li>
+							</ul>
+						</li>
+						<li><a href="/contact" >Nous contacter</a></li>
+						<li><a href="/connect" class="button">Connexion</a></li>
+					</ul>
+				</nav>
+			</header>
+
+			<!-- Main -->
+				<section id="main" class="container 75%">
+					<header>
+						<h2>Inscription d'un propriétaire de terrain</h2>
+						<p>Veuillez entrer vos données personnelles, ainsi que les informations concernant un de vos terrains. Vous pourrez ajouter d'autre terrain à votre compte une fois inscrit. Tous les champs sont obligatoires.</p>
+					</header>
+					{% if errorname == 'true' %}
+						<header>
+							<p><font size="3" color="red">Le nom de famille ne peut pas dépasser trente caractères.</font></p>
+						</header>
+					{% elseif errorfirstname == 'true' %}
+						<header>
+							<p><font size="3" color="red">Le prénom ne peut pas dépasser trente caractères.</font></p>
+						</header>
+					{% elseif errorpassword == 'true' %}
+						<header>
+							<p><font size="3" color="red">Les deux mots de passe ne correspondent pas.</font></p>
+						</header>
+					{% elseif erroremail == 'true' %}
+						<header>
+							<p><font size="3" color="red">L'adresse mail doit être une adresse valide.</font></p>
+						</header>
+					{% elseif errorage == 'true' %}
+						<header>
+							<p><font size="3" color="red">Il faut rentrer un âge valide.</font></p>
+						</header>
+					{% elseif errorinstructions == 'true' %}
+						<header>
+							<p><font size="3" color="red">Les remarques à propos du terrain ne peuvent pas dépasser mille caractères.</font></p>
+						</header>
+					{% endif %}
+					<div class="box">
+						{{ form_start(formowner) }}
+						<form method="post" action="#">
+							<div class="row uniform 50%">
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formowner.name) }}
+									<!-- <input type="text" name="name" id="name" value="" placeholder="Name" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formowner.firstname) }}
+									<!-- <input type="email" name="email" id="email" value="" placeholder="Email" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+										{{ form_row(formowner.pass1) }}
+									<!-- <input type="text" name="name" id="name" value="" placeholder="Name" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formowner.pass) }}
+									<!-- <input type="text" name="name" id="name" value="" placeholder="Name" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formowner.email) }}
+									<!-- <input type="email" name="email" id="email" value="" placeholder="Email" /> -->
+								</div>
+								<div class="12u">
+									{{ form_row(formowner.address) }}
+									<!-- <input type="email" name="email" id="email" value="" placeholder="Email" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formowner.phone) }}
+									<!-- <input type="email" name="email" id="email" value="" placeholder="Email" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formowner.courtstate) }}
+									<!-- <input type="email" name="email" id="email" value="" placeholder="Email" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_widget(formowner.surface) }}
+									<!-- <input type="email" name="email" id="email" value="" placeholder="Email" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_widget(formowner.indoor) }}
+									<!-- <input type="email" name="email" id="email" value="" placeholder="Email" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_widget(formowner.dispo) }}
+									
+									<!-- <input type="email" name="email" id="email" value="" placeholder="Email" /> -->
+								</div>
+								<div class="12u">
+									{{ form_row(formowner.addresscourt) }}
+									<!-- <input type="email" name="email" id="email" value="" placeholder="Email" /> -->
+								</div>
+								<div class="12u">
+									{{ form_row(formowner.courtinstructions) }}
+									<!-- <input type="email" name="email" id="email" value="" placeholder="Email" /> -->
+								</div>
+
+
+							</div>
+
+							<div class="row uniform">
+								<div class="12u">
+									<ul class="actions align-center">
+										<li><input id="owner_submit" type="submit" value="Envoyer" /></li>
+									</ul>
+								</div>
+							</div>
+						</form>
+						{{ form_end(formowner) }}
+					</div>
+				</section>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="https://www.facebook.com/Asmae-161275587240084/?fref=ts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Tous droits réservés.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets2/js/jquery.min.js"></script>
+			<script src="assets2/js/jquery.dropotron.min.js"></script>
+			<script src="assets2/js/jquery.scrollgress.min.js"></script>
+			<script src="assets2/js/skel.min.js"></script>
+			<script src="assets2/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets2/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets2/js/main.js"></script>
+
+	</body>
+</html>

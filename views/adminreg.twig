@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<!--
+	Alpha by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Inscription comme Admin</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets2/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets2/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets2/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1>Inscription comme Admin</h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="/test">Accueil</a></li>
+							<li><a href="/niews">News</a></li>
+							<li><a href="/faq">FAQ</a></li>
+							<li><a href="/test-group">Recherche de groupes</a></li>
+							<li>
+								<a href="#" class="icon fa-angle-down">Inscription</a>
+								<ul>
+									<li><a href="/test-owner">Propriétaire de terrain</a></li>
+									<li><a href="test-player">Joueur</a></li>
+									<li><a href="/test-tournament">Tournoi</a></li>
+								</ul>
+							</li>
+							<li><a href="/contact" >Nous contacter</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<section id="main" class="container 75%">
+					<header>
+						<h2>Inscription comme Admin</h2>
+						<p></p>
+					</header>
+					<div class="box">
+						{{ form_start(formad) }}
+						<form method="post" action="#">
+							<div class="row uniform 50%">
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formad.name) }}
+									<!-- <input type="text" name="name" id="name" value="" placeholder="Name" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formad.firstname) }}
+									<!-- <input type="text" name="name" id="name" value="" placeholder="FirstName" /> -->
+								</div>
+
+
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formad.email) }}
+									<!-- <input type="email" name="email" id="email" value="" placeholder="Email" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formad.address) }}
+									<!-- <input type="text" name="name" id="name" value="" placeholder="Name" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formad.phone) }}
+									<!-- <input type="text" name="name" id="name" value="" placeholder="Name" /> -->
+								</div>
+
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formad.pass1) }}
+									<!-- <input type="text" name="name" id="name" value="" placeholder="Name" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formad.pass) }}
+									<!-- <input type="text" name="name" id="name" value="" placeholder="Name" /> -->
+								</div>
+
+
+
+
+							</div>
+
+
+							<div class="row uniform">
+								<div class="12u">
+									<ul class="actions align-center">
+										<li>
+											<input id="adminreg_submit" type="submit" value="Envoyer" />
+										</li>
+									</ul>
+								</div>
+							</div>
+						</form>
+						{{ form_end(formad) }}
+					</div>
+				</section>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+						<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+						<li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Tous droits réservés.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets2/js/jquery.min.js"></script>
+			<script src="assets2/js/jquery.dropotron.min.js"></script>
+			<script src="assets2/js/jquery.scrollgress.min.js"></script>
+			<script src="assets2/js/skel.min.js"></script>
+			<script src="assets2/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets2/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets2/js/main.js"></script>
+
+	</body>
+</html>

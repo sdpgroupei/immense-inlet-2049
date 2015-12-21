@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<!--
+	Alpha by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Liste des groupes</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets2/css/main.css" />
+	</head>
+	<body>
+		<div id="page-wrapper">
+			<!-- Header -->
+				<header id="header">
+					<h1>Liste des groupes</h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="/test">Accueil</a></li>
+							<li><a href="/niews">News</a></li>
+							<li><a href="/faq">FAQ</a></li>
+
+							{% if staff %}
+							<li><a href="#" class="icon fa-angle-down">Lien vers page administrateur</a>
+							<ul>
+								<li><a href="/faqadmin">FAQ pour les admins</a></li>
+								<li><a href="/faqadmin">FAQ pour les admins</a></li>
+								<li><a href="/admingestion">Tous les courts</a></li>
+								<li><a href="/adminpairgestion">Gestion des paires</a></li>
+								<li><a href="/admingroupsgestion/-1">Tous les groupes</a></li>
+								<li><a href="/adminresults">Tous les Résultats</a></li>
+								<li><a href="/courtadmin">Vos courts</a></li>
+								<li><a href="/test-match-result">Entrer les résultats </a></li>
+								<li><a href="/groupgeneration">Génération des groupes</a></li>
+								<li><a href="/niewsfeed">Création de news</a></li>
+								<li><a href="/niewsgestion">Gestion des news</a></li>
+								<li><a href="/courthistory">Historique des courts</a></li>
+								<li><a href="/knockoff">Knockoff</a></li>
+								<li><a href="/edittournament">Créer un tournoi</a></li>
+								{% if superuser %}
+								<li><a href="/knockoffsuperuser">Générer le knockoff</a></li>
+								<li><a href="/knockoffgestion">Gestion du knockoff</a></li>
+								{% endif %}
+								<li><a href="/export-db">Exporter en CSV</a></li>
+							</ul>
+							</li>
+							{% else %}
+							<li>
+								<a href="#" class="icon fa-angle-down">Inscription</a>
+								<ul>
+									<li><a href="/test-owner">Propriétaire de terrain</a></li>
+									<li><a href="test-player">Joueur</a></li>
+									<li><a href="/test-tournament">Tournoi</a></li>
+								</ul>
+							</li>
+							<li><a href="/contact" >Nous contacter</a></li>
+							{% endif %}
+
+							{% if owner %}
+							<li><a href="/ownergestion" >Lien vers page owner</a></li>
+							{% endif %}
+
+							{% if staff or owner %}
+								<li><a href="/disconnect" class="button">Déconnexion</a></li>
+							{% endif %}
+							{% if not (staff or owner) %}
+							<li><a href="/connect" class="button">Connexion</a></li>
+							{% endif %}
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Main -->
+				<section id="main" class="container 75%">
+					<header>
+						<h2>Liste des groupes</h2>
+						<p>Vous pouvez rechercher le groupe dans lequel vous jouer en fournissant vos données.</p>
+					</header>
+
+					{% if issubmit %}
+					<header>
+					{% if result is empty %}
+						<tr>
+		  					Aucun groupe n'a été trouvé pour cette personne. Il est à noter que les groupes doivent d'abord être formés par les admins. N'hésitez pas à revenir voir plus tard si le groupe a été rajouté ! <br>
+		  				</tr>
+		  			{% else %}
+					<table>
+						<tr>
+							<td><b>N° du groupe</b></td>
+							<td><b>N° de la paire</b></td>
+							<td><b>Adresse du terrain</b></td>
+							<td><b>Date du tournoi</b></td>
+						</tr>
+						{% for n in result %}
+						<tr>
+		  					<td>{{ n.idgroups }} </td>
+		  					<td>{{ n.idpairs }} </td>
+		  					<td>{{ n.court_address }} </td>
+		  					<td>{{ n.day }} </td>
+		  				</tr>
+						{% endfor %}
+					</table>
+					{% endif %}
+					</header>
+					{% endif %}
+
+					<div class="box">
+						{{ form_start(formplayer) }}
+						<form method="post" action="#">
+							<div class="row uniform 50%">
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formplayer.name) }}
+									<!-- <input type="text" name="name" id="name" value="" placeholder="Name" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formplayer.firstname) }}
+									<!-- <input type="text" name="name" id="name" value="" placeholder="FirstName" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formplayer.email) }}
+									<!-- <input type="email" name="email" id="email" value="" placeholder="Email" /> -->
+								</div>
+								<div class="6u 12u(mobilep)">
+									{{ form_row(formplayer.tournament) }}
+									<!-- <input type="email" name="email" id="email" value="" placeholder="Email" /> -->
+								</div>
+
+							</div>
+							<div class="row uniform">
+								<div class="12u">
+									<ul class="actions align-center">
+										<li><input type="submit" value="Soumettre" /></li>
+									</ul>
+								</div>
+							</div>
+						</form>
+						{{ form_end(formplayer) }}
+					</div>
+				</section>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="https://www.facebook.com/Asmae-161275587240084/?fref=ts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Tous droits réservés.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets2/js/jquery.min.js"></script>
+			<script src="assets2/js/jquery.dropotron.min.js"></script>
+			<script src="assets2/js/jquery.scrollgress.min.js"></script>
+			<script src="assets2/js/skel.min.js"></script>
+			<script src="assets2/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets2/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets2/js/main.js"></script>
+
+	</body>
+</html>

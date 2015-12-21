@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<!--
+	Alpha by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Asmae: charles de lorraine</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets2/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets2/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets2/css/ie8.css" /><![endif]-->
+	</head>
+	<body class="landing">
+		<div id="page-wrapper">
+			<!-- Header -->
+				<header id="header" class="alt">
+					<h1>Accueil</h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="/niews">News</a></li>
+							<li><a href="/faq">FAQ</a></li>
+							<li><a href="/test-group">Recherche de groupes</a></li>
+							<li><a href="/adminresults">Tous les Résultats</a></li>
+							{% if staff %}
+							<li><a href="#" class="icon fa-angle-down">Lien vers page administrateur</a>
+							<ul>
+								<li><a href="/faqadmin">FAQ pour les admins</a></li>
+								<li><a href="/admingestion">Tous les courts</a></li>
+								<li><a href="/adminpairgestion">Gestion des paires</a></li>
+								<li><a href="/admingroupsgestion/-1">Tous les groupes</a></li>
+								<li><a href="/adminresults">Tous les Résultats</a></li>
+								<li><a href="/courtadmin">Vos courts</a></li>
+								<li><a href="/test-match-result">Entrer les résultats </a></li>
+								<li><a href="/groupgeneration">Génération des groupes</a></li>
+								<li><a href="/niewsfeed">Création de news</a></li>
+								<li><a href="/niewsgestion">Gestion des news</a></li>
+								<li><a href="/courthistory">Historique des courts</a></li>
+								<li><a href="/knockoff">Knockoff</a></li>
+								<li><a href="/edittournament">Créer un tournoi</a></li>
+								{% if superuser %}
+								<li><a href="/knockoffsuperuser">Générer le knockoff</a></li>
+								<li><a href="/knockoffgestion">Gestion du knockoff</a></li>
+								{% endif %}
+								<li><a href="/export-db">Exporter en CSV</a></li>
+							</ul>
+							</li>
+							{% else %}
+							<li>
+								<a href="#" class="icon fa-angle-down">Inscription</a>
+								<ul>
+									<li><a href="/test-owner">Propriétaire de terrain</a></li>
+									<li><a href="test-player">Joueur</a></li>
+									<li><a href="/test-tournament">Tournoi</a></li>
+								</ul>
+							</li>
+							<li><a href="/contact" >Nous contacter</a></li>
+							{% endif %}
+
+							{% if owner %}
+							<li><a href="/ownergestion" >Lien vers page owner</a></li>
+							{% endif %}
+
+							{% if staff or owner %}
+								<li><a href="/disconnect" class="button">Déconnexion</a></li>
+							{% endif %}
+							{% if not (staff or owner) %}
+							<li><a href="/connect" class="button">Connexion</a></li>
+							{% endif %}
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Banner -->
+				<section id="banner">
+					<img src="../image_contact/cdlLogo.png">
+					<!-- <ul class="actions">
+						<li><a href="#" class="button special">Sign Up</a></li>
+						<li><a href="#" class="button">Learn More</a></li>
+					</ul> -->
+				</section>
+
+			<!-- Main -->
+				<section id="main" class="container">
+
+					<section class="box special">
+						<header class="major">
+							<h2>Information générale</h2>
+							<p>
+								Pour commencer, vous pouvez vous inscrire comme joueur ou comme propriétaire de terrain de tennis dans la partie "Inscription" et ensuit dans "joueur".
+								Il vous sera demandé de fournir vos données personnelles (tous les champs sont obligatoires!). Une fois que vous êtes inscrit, vous pouvez vous enregistrer à un tournoi. Cela se fait en accédant à la partie "Inscription aux tournois". Vous pouvez vous y inscrire avec un partenaire. Il faut préalablement vous assurer que votre partenaire soit bien inscrit lui aussi. Vous n'avez pas de partenaire? Pas de problème! Il y a aussi moyen de s'inscrire pour les tournois en solo sur la même page. Si vous possédez un terrain de tennis et que vous êtes pret à le prêter pour les tournois, dirigez-vous vers l'onglet "Inscription" et ensuit vers "propriétaire de terrain". Si vous avez un terrain à inscrire pour le tournoi et que vous voulez participer au tournoi, veuillez vous inscrire une fois en tant que joueur et une fois en tant que propriétaire de terrain. Si vous ne créez pas de compte joueur, vous ne pourrez pas participer. <br />
+							</p>
+
+						</header>
+						<ul class="actions">
+							<li><a href="/test-player" class="button special big">Inscription Joueur</a></li>
+						</ul>
+
+						<!-- <span class="image featured"><img src="images/pic01.jpg" alt="" /></span> -->
+					</section>
+
+
+
+
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="https://www.facebook.com/Asmae-161275587240084/?fref=ts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Tous droits réservés.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li><li>Powered by <a href="https://www.heroku.com/">Heroku</a></li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets2/js/jquery.min.js"></script>
+			<script src="assets2/js/jquery.dropotron.min.js"></script>
+			<script src="assets2/js/jquery.scrollgress.min.js"></script>
+			<script src="assets2/js/skel.min.js"></script>
+			<script src="assets2/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets2/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets2/js/main.js"></script>
+
+	</body>
+</html>

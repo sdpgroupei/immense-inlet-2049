@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<!--
+	Alpha by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Affichage des résultat</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets2/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets2/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets2/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header" >
+					<h1>Affichage des résultats</h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="/test">Accueil</a></li>
+							<li><a href="/niews">News</a></li>
+							<li><a href="/faq">FAQ</a></li>
+							{% if staff %}
+								<li><a href="#" class="icon fa-angle-down">Lien vers page administrateur</a>
+								<ul>
+									<li><a href="/faqadmin">FAQ pour les admins</a></li>
+									<li><a href="/admingestion">Tous les courts</a></li>
+									<li><a href="/adminpairgestion">Gestion des paires</a></li>
+									<li><a href="/admingroupsgestion/-1">Tous les groupes</a></li>
+									<li><a href="/adminresults">Tous les Résultats</a></li>
+									<li><a href="/courtadmin">Vos courts</a></li>
+									<li><a href="/test-match-result">Entrer les résultats </a></li>
+									<li><a href="/groupgeneration">Génération de groupes</a></li>
+									<li><a href="/niewsfeed">Création de news</a></li>
+									<li><a href="/niewsgestion">Gestion des news</a></li>
+									<li><a href="/courthistory">Historique des courts</a></li>
+									<li><a href="/knockoff">Knockoff</a></li>
+									<li><a href="/edittournament">Créer un tournoi</a></li>
+									{% if superuser %}
+									<li><a href="/knockoffsuperuser">Générer knockoff</a></li>
+									<li><a href="/knockoffgestion">Gestion du knockoff</a></li>
+									{% endif %}
+								</ul>
+								</li>
+							{% endif %}
+							<li><a href="/contact" >Nous contacter</a></li>
+							{% if staff %}
+								<li><a href="/disconnect" class="button">Déconnexion</a></li>
+							{% else %}
+								<li><a href="/connect" class="button">Connexion</a></li>
+							{% endif %}
+						</ul>
+					</nav>
+				</header>
+
+
+			<!-- Main -->
+				<section id="main" class="container 75%">
+					<header>
+						<h2>Résultats</h2>
+					</header>
+					<div class="box">
+						<p>Vous pouvez rechercher un résultat spécifique grâce au formulaire de recherche ci-dessous.
+							Les résultats de la recherche seront affichés dans les tableaux plus bas.
+						</p>
+						{{ form_start(formresult) }}
+						<form method="post" action="#">
+							<div class="row uniform 50%">
+								<div class="12u">
+									{{ form_row(formresult.pair1) }}
+									<!-- <input type="integer" name="pair1" id="pair1" value="" placeholder="N° d'une pair" /> -->
+								</div>
+							</div>
+							
+							<div class="row uniform 50%">
+								<div class="12u">
+									{{ form_row(formresult.pair2) }}
+									<!-- <input type="integer" name="pair2" id="pair2" value="" placeholder="N° de la 2ème pair" /> -->
+								</div>
+							</div>
+							
+							
+							<div class="row uniform 50%">
+								<div class="12u">
+									{{ form_row(formresult.tournament) }}
+									<!-- <input type="text" name="tournament" id="tournament" value="" placeholder="Tournoi" /> -->
+								</div>
+							</div>
+
+							<div class="row uniform">
+								<div class="12u">
+									<ul class="actions align-center">
+										<li><input id="findresult" type="submit" value="Rechercher" /></li>
+									</ul>
+								</div>
+							</div>
+						</form>
+						{{ form_end(formresult) }}
+					</div>
+					<div class="row">
+						<div class="12u">
+
+							<!-- Table -->
+								<section class="box">
+									<h2>Liste des Resultats</h2>
+									<div class="table-wrapper">
+										{% if results is empty %}
+										<p> Pas de résultats dans la database ! </p>
+										{% endif %}
+										<table>
+											<thead>
+												<tr>
+													<th>N° de la 1ère paire</th>
+													<th>N° de la 2ème paire</th>
+													<th>1</th>
+													<th>2</th>
+													<th>3</th>
+													<th>4</th>
+													<th>5</th>
+													<th>N° du gr</th>
+													<th>tournoi</th>
+													{% if staff %}
+														<th>Supprimer</th>
+													{% endif %}
+												</tr>
+											</thead>
+											<tbody>
+												{% for n in results %}
+												<tr>
+													<td>{{ n.i1}}</td>
+													<td>{{ n.i2}}</td>
+													<td>{{ n.s1}}</td>
+													<td>{{ n.s2}}</td>
+													<td>{{ n.s3}}</td>
+													<td>{{ n.s4}}</td>
+													<td>{{ n.s5}}</td>
+													<td>{{ n.g}}</td>
+													<td>{{ n.tn}}({{n.td}})</td>
+													{% if staff %}
+														<td> <a href="  {{ url('deleteresult', {id: n.id}) }} ">Supprimer </a> </td>
+													{% endif %}
+												</tr>
+												{% endfor %}
+											</tbody>
+											<tfoot>
+												<tr>
+													<td colspan="2"></td>
+													<!-- <td>100.00</td> -->
+												</tr>
+											</tfoot>
+										</table>
+
+											<!-- <li>Pas de résultats dans la database !</li> -->
+									</div>
+								</section>
+						</div>
+					</div>
+				</section>
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="https://www.facebook.com/Asmae-161275587240084/?fref=ts" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Tous droits réservés.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets2/js/jquery.min.js"></script>
+			<script src="assets2/js/jquery.dropotron.min.js"></script>
+			<script src="assets2/js/jquery.scrollgress.min.js"></script>
+			<script src="assets2/js/skel.min.js"></script>
+			<script src="assets2/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets2/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets2/js/main.js"></script>
+
+	</body>
+</html>
